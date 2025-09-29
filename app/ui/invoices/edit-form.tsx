@@ -18,10 +18,15 @@ export default function EditInvoiceForm({
   invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
-  const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+  // const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+  const handleUpdateInvoice = async (formData: FormData): Promise<void> => {
+    const result = await updateInvoice(invoice.id, formData);
+    // Handle the result if needed (e.g., show toast notification)
+    console.log(result.message);
+  };
 
   return (
-    <form action={updateInvoiceWithId}>
+    <form action={handleUpdateInvoice}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
