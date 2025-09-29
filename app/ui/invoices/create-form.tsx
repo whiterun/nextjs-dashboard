@@ -10,8 +10,14 @@ import { Button } from '@/app/ui/button';
 import { createInvoice } from '@/app/lib/actions';
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
+  const handleCreateInvoice = async (formData: FormData): Promise<void> => {
+    const result = await createInvoice(formData);
+    // Handle the result if needed (e.g., show toast notification)
+    console.log(result.message);
+  };
+
   return (
-    <form action={createInvoice}>
+    <form action={handleCreateInvoice}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
